@@ -5,18 +5,18 @@ let wordBank = ["avatar", "titanic", "avengers", "starwars", "jurassicpark", "li
 let wins = 0;
 let losses = 0; 
 let chosenWord;
+let hiddenWord = ""
 
 function roll () {
     index = Math.floor(Math.random() * 10)
     chosenWord = wordBank[index];
 
-    for (let i = 0; i <= wordBank.length; i++) {
-
+    for (let i = 0; i <= chosenWord.length; i++) {
+        hiddenWord += "_ "
+        document.getElementById("currentWord").innerHTML = hiddenWord;
     }
 }
 
 roll();
-
-console.log(chosenWord);
 
 
