@@ -5,7 +5,7 @@ let wordBank = ["avatar", "titanic", "avengers", "starwars", "jurassicpark", "li
 let wins = 0;
 let losses = 0; 
 let chosenWord;
-let hiddenWord = ""
+let hiddenWord = "";
 
 function roll () {
     index = Math.floor(Math.random() * 10)
@@ -15,8 +15,27 @@ function roll () {
         hiddenWord += "_ "
         document.getElementById("currentWord").innerHTML = hiddenWord;
     }
+    
+console.log(chosenWord);
 }
 
-roll();
+function clear(){
+    hiddenWord = "";
+    document.getElementById("currentWord").innerText = hiddenWord;
+}; 
+
+document.getElementById("start").onclick = function() {
+    clear();
+    roll();
+};
+
+
+
+
+document.addEventListener('keyup', check);
+
+function check(e) {
+  console.log(e.key);
+}
 
 
