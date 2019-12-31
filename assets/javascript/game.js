@@ -8,7 +8,7 @@ let guessLeft = 0;
 let chosenWord;
 let hiddenWordArr = [];
 let splitWordArr = []; 
-
+let lettersGuessed =[];
 
 function clear(){
     hiddenWord = "";
@@ -45,22 +45,21 @@ function roll () {
 
 document.addEventListener('keyup', check);
 
+
 function check(e) {
     var x = event.keyCode;  
     var y = String.fromCharCode(x).toLowerCase();
 
-    for (let k = 0; k < splitWordArr.length; k++) {
-        if (y === splitWordArr[k]) {
-            hiddenWordArr[k] = splitWordArr[k];
-            hiddenWord = hiddenWordArr.join(" ");
-            document.getElementById("currentWord").innerHTML = hiddenWord;
-        } else {
-            document.getElementById("currentWord").innerHTML = hiddenWord;
-        }
+        for (let k = 0; k < splitWordArr.length; k++) {
+            if(y === splitWordArr[k]) {
+                    hiddenWordArr[k] = splitWordArr[k];
+                    hiddenWord = hiddenWordArr.join(" ");
+                    document.getElementById("currentWord").innerHTML = hiddenWord;
+        } 
+        lettersGuessed.push(y);
     }
+
+    let unique = [...new Set(lettersGuessed)];
+
+    document.getElementById("lettersGuessed").innerHTML = unique;
 }
-
-
-
-
-
