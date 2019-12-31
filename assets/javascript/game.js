@@ -4,7 +4,7 @@ let wordBank = ["avatar", "titanic", "avengers", "starwars", "jurassicpark", "li
 
 let wins = 0;
 let losses = 0; 
-let guessLeft = 0; 
+let guessLeft = 10; 
 let chosenWord;
 let hiddenWordArr = [];
 let splitWordArr = []; 
@@ -12,7 +12,10 @@ let lettersGuessed =[];
 
 function clear(){
     hiddenWord = "";
-    // document.getElementById("currentWord").innerText = hiddenWord;
+    lettersGuessed = [];
+    unique = [];
+    let guessLeft = 10; 
+    document.getElementById("lettersGuessed").innerText = lettersGuessed;
     document.getElementById("wins").innerText = "Wins: " + wins;
     document.getElementById("losses").innerText = "Losses: " + losses;
     document.getElementById("GuessesLeft").innerText = "Guesses Left: " + guessLeft;
@@ -54,7 +57,10 @@ function check(e) {
             if(y === splitWordArr[k]) {
                     hiddenWordArr[k] = splitWordArr[k];
                     hiddenWord = hiddenWordArr.join(" ");
-                    document.getElementById("currentWord").innerHTML = hiddenWord;
+                    document.getElementById("currentWord").innerHTML = hiddenWord; 
+            } else {
+                guessLeft -= 1;
+                document.getElementById("GuessesLeft").innerHTML = "Guesses Left: " + guessLeft;  
         } 
         lettersGuessed.push(y);
     }
