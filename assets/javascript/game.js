@@ -24,6 +24,7 @@ function clear(){
 document.getElementById("start").onclick = function() {
     clear();
     roll();
+    playAgain();
 };
 
 function roll () {
@@ -69,3 +70,8 @@ function check(e) {
 
     document.getElementById("lettersGuessed").innerHTML = unique;
 }
+
+
+function playAgain() {
+    document.getElementById("start").innerHTML = "Play Again!";
+  }
