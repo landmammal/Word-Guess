@@ -6,12 +6,13 @@ let wins = 0;
 let losses = 0; 
 let guessLeft = 0; 
 let chosenWord;
-let spacedWord = ""; 
-let hiddenWord = "";
+let hiddenWordArr = [];
+let splitWordArr = []; 
+
 
 function clear(){
     hiddenWord = "";
-    document.getElementById("currentWord").innerText = hiddenWord;
+    // document.getElementById("currentWord").innerText = hiddenWord;
     document.getElementById("wins").innerText = "Wins: " + wins;
     document.getElementById("losses").innerText = "Losses: " + losses;
     document.getElementById("GuessesLeft").innerText = "Guesses Left: " + guessLeft;
@@ -25,18 +26,40 @@ document.getElementById("start").onclick = function() {
 function roll () {
     index = Math.floor(Math.random() * 10)
     chosenWord = wordBank[index];
+    splitWordArr = [];
+    hiddenWordArr = [];
 
     for (let i = 0; i < chosenWord.length; i++) {
-        hiddenWord += "_ ";
-        document.getElementById("currentWord").innerHTML = hiddenWord;
+        splitWordArr.push(chosenWord[i]);
     }
-    for (let j = 0; j <= chosenWord.length-1; j++) {
-        spacedWord += chosenWord.charAt(j) + " ";
-    }
+    joinWord = splitWordArr.join(" ");
     
-console.log(chosenWord);
-console.log(spacedWord);
+    for (let j = 0; j < chosenWord.length; j++) {
+        hiddenWordArr.push("_");
+    }
+
+    hiddenWord = hiddenWordArr.join(" ");
+
+    document.getElementById("currentWord").innerHTML = hiddenWord;
 }
+
+document.addEventListener('keyup', check);
+
+function check(e) {
+    var x = event.keyCode;  
+    var y = String.fromCharCode(x).toLowerCase();
+
+    for (let k = 0; k < splitWordArr.length; k++) {
+        if (y === splitWordArr[k]) {
+            hiddenWordArr[k] = splitWordArr[k];
+            hiddenWord = hiddenWordArr.join(" ");
+            document.getElementById("currentWord").innerHTML = hiddenWord;
+        } else {
+            document.getElementById("currentWord").innerHTML = hiddenWord;
+        }
+    }
+}
+
 
 
 
