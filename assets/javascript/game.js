@@ -66,10 +66,10 @@ function check(e) {
 
             //bug 2, game automatically uses the last guess from previous game as the first guess of the next game after a win. May have something to do with index -1 condition
             if (hiddenWordArr.indexOf("_") === -1) {
-                if (confirm("You Won")) {           
+                    alert("You Won")           
                     wins += 1
                     document.getElementById("GuessesLeft").innerHTML = guessLeft;
-                    document.getElementById("wins").innerHTML = "Wins: " + wins;}
+                    document.getElementById("wins").innerHTML = "Wins: " + wins;
             }
         }
 
@@ -80,7 +80,7 @@ function check(e) {
                 if (guessLeft === 0) {
                     alert("You Lost!")
                     losses += 1
-                    document.getElementById("losses").innerHTML = "Losses: " + wins;   
+                    document.getElementById("losses").innerHTML = "Losses: " + losses;   
                     // clear();
                 } 
         }
