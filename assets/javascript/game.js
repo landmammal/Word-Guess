@@ -62,6 +62,8 @@ function check(e) {
                 lettersGuessed.push(y);
             } else if (hiddenWordArr.indexOf("_") === -1) {
                 alert("You Won!")
+                wins += 1
+                document.getElementById("wins").innerHTML = "Wins: " + wins;
                 clear();
                 roll();
             }
@@ -70,8 +72,10 @@ function check(e) {
             guessLeft -= 1;
             lettersGuessed.push(y);
             document.getElementById("GuessesLeft").innerHTML = "Guesses Left: " + guessLeft; 
-                if (guessLeft <= 0) {
+                if (guessLeft === 0) {
                     alert("You Lost!")
+                    losses += 1
+                    document.getElementById("losses").innerHTML = "Losses: " + wins;
                     clear();
                     roll(); 
                 } 
