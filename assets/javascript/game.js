@@ -56,16 +56,26 @@ function check(e) {
 
         for (let k = 0; k < splitWordArr.length; k++) {
             if(y === splitWordArr[k]) {
-                    hiddenWordArr[k] = splitWordArr[k];
-                    hiddenWord = hiddenWordArr.join(" ");
-                    document.getElementById("currentWord").innerHTML = hiddenWord; 
-            } else {
-                guessLeft -= 1;
-                document.getElementById("GuessesLeft").innerHTML = "Guesses Left: " + guessLeft;  
-        } 
-        lettersGuessed.push(y);
-    }
-
+                hiddenWordArr[k] = splitWordArr[k];
+                hiddenWord = hiddenWordArr.join(" ");
+                document.getElementById("currentWord").innerHTML = hiddenWord; 
+                lettersGuessed.push(y);
+            } else if (hiddenWordArr.indexOf("_") === -1) {
+                alert("You Won!")
+                clear();
+                roll();
+            }
+        }
+        if (lettersGuessed.indexOf(y) === -1){
+            guessLeft -= 1;
+            lettersGuessed.push(y);
+            document.getElementById("GuessesLeft").innerHTML = "Guesses Left: " + guessLeft; 
+                if (guessLeft <= 0) {
+                    alert("You Lost!")
+                    clear();
+                    roll(); 
+                } 
+        }
     let unique = [...new Set(lettersGuessed)];
 
     document.getElementById("lettersGuessed").innerHTML = unique;
