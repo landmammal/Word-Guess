@@ -25,6 +25,7 @@ document.getElementById("start").onclick = function() {
     clear();
     playAgain();
     roll();
+    document.addEventListener('keyup', check);
 };
 
 function roll () {
@@ -49,8 +50,6 @@ function roll () {
     document.getElementById("currentWord").innerHTML = hiddenWord;
 }
 
-document.addEventListener('keyup', check);
-
 
 function check(e) {
     var x = event.keyCode;  
@@ -61,7 +60,6 @@ function check(e) {
                 alert("You Won")           
                 wins += 1
                 document.getElementById("wins").innerHTML = "Wins: " + wins;
-                clear();
             }
         
         for (let k = 0; k < splitWordArr.length; k++) {
@@ -81,8 +79,8 @@ function check(e) {
                     alert("You Lost!")
                     losses += 1
                     document.getElementById("losses").innerHTML = "Losses: " + losses;   
-                    clear();
-                    roll();
+                    // clear();
+                    // roll();
                 } 
         }
     let unique = [...new Set(lettersGuessed)];
