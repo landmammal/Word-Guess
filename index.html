@@ -9,57 +9,56 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-
+    
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body>
     
-    <div class="jumbotron">
+    <div class="jumbotron justify-content-center">
         <div class="mx-auto">    
-            <h1 class="justify-content-center">Word Guess Game</h1>
-            <p class="mx-auto">Can you guess the word?</p>
+            <h1 class="mx-auto">Movie Hangman!</h1>
             <hr>
+            <p class="mx-auto">Can you guess the blockbuster film in the correct amount of tries? Press the start button to play and press the play again to restart the game at any time!</p>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div clas="col-sm-12">
+    <div class="container text-light rounded-pill">
+        <div class="row justify-content-center">
+            <div class="col-sm-3 p-3 mx-auto">
                 <button id="start" onclick="playAgain()">Click me to start!</button>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <h3 id="wins">Wins: 0</h3>
+                <h3 id="wins" class="mx-auto border border-light">Wins: 0</h3>
             </div>
             <div class="col-sm-6">
-                <h3 id="losses">Losses: 0</h3>
+                <h3 id="losses" class="mx-auto border border-light">Losses: 0</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <p>Current Word</p>
+        <div class="row p-3">
+            <div class="col-sm-12 justify-content-center">
+                <h4 class="mx-auto">Current Word</h4>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <!-- current place holder -->
-                <p id="currentWord"></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <p>Letters Guessed</p>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row p-3">
             <div class="col-sm-12">
                 <!-- current place holder -->
-                <h5 id="lettersGuessed"></h5>
+                <h4 class="mx-auto" id="currentWord"></h4>
             </div>
         </div>
-        <div class="row">
+        <div class="row p-3">
             <div class="col-sm-6">
-                <h5>Guesses Left: </h5>
+                <h4 class="ml-auto border border-light">Letters Guessed</h4>
+            </div>
+            <div class="col-sm-6">
+                <!-- current place holder -->
+                    <h5 id="lettersGuessed"></h5>
+            </div>
+        </div>
+        <div class="row p-3">
+            <div class="col-sm-6 justify-content-end">
+                <h5 class="ml-auto">Guesses Left: </h5>
             </div>
             <div class="col-sm-6">
                 <h5 id="GuessesLeft">10</h5>
