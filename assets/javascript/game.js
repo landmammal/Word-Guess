@@ -30,6 +30,7 @@ document.getElementById("start").onclick = function() {
 function roll () {
     document.addEventListener('keyup', check);
     index = Math.floor(Math.random() * 10)
+    guessLeft = 10; 
     chosenWord = wordBank[index];
     splitWordArr = [];
     hiddenWordArr = [];
@@ -48,29 +49,28 @@ function roll () {
     document.getElementById("currentWord").innerHTML = hiddenWord;
 }
 
-// document.addEventListener('keyup', check);
+document.addEventListener('keyup', check);
 
 
 function check(e) {
     var x = event.keyCode;  
     var y = String.fromCharCode(x).toLowerCase();
-
         //bug 1, need to come up with a solution to not include correct letters into the letters guess array
+        
+            if (hiddenWordArr.indexOf("_") === -1) {
+                alert("You Won")           
+                wins += 1
+                document.getElementById("wins").innerHTML = "Wins: " + wins;
+                clear();
+            }
+        
         for (let k = 0; k < splitWordArr.length; k++) {
-            if(y === splitWordArr[k]) {
+            if (y === splitWordArr[k]) {
                 hiddenWordArr[k] = splitWordArr[k];
                 hiddenWord = hiddenWordArr.join(" ");
                 document.getElementById("currentWord").innerHTML = hiddenWord; 
                 lettersGuessed.push(y);
             } 
-
-            //bug 2, game automatically uses the last guess from previous game as the first guess of the next game after a win. May have something to do with index -1 condition
-            if (hiddenWordArr.indexOf("_") === -1) {
-                    alert("You Won")           
-                    wins += 1
-                    document.getElementById("GuessesLeft").innerHTML = guessLeft;
-                    document.getElementById("wins").innerHTML = "Wins: " + wins;
-            }
         }
 
         if (lettersGuessed.indexOf(y) === -1){
@@ -81,7 +81,8 @@ function check(e) {
                     alert("You Lost!")
                     losses += 1
                     document.getElementById("losses").innerHTML = "Losses: " + losses;   
-                    // clear();
+                    clear();
+                    roll();
                 } 
         }
     let unique = [...new Set(lettersGuessed)];
